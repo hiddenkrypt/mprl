@@ -1,0 +1,15 @@
+{
+  "name": "mprl",
+  "version": "0.0.1",
+  "description": "Multiplayer Roguelike slash MUD",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "Rav-T",
+  "license": "UNLICENCED",
+  "dependencies": {
+    "express": "^4.16.3",
+    "socketio": "^1.0.0"
+  }
+}

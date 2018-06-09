@@ -1,12 +1,33 @@
 canvas{
-  /* border-width: 3px;
-  border-style: solid;
-  border-color: #00ff00; */
-  display:block;
-  margin:0 auto;
-  width:900px;
-  height:810px;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
 }
 body{
   background-color:#121212;
+}
+#container{
+  display:grid;
+  grid-template-columns: 600px auto;
+  grid-template-rows: auto 150px;
+  width:900px;
+  margin:auto;
+}
+#side{
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+#textContainer{
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+textarea{
+  background-color: rgba(0,0,0,0);
+  width:100%;
+  height:100%;
 }

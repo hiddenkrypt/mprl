@@ -2,14 +2,6 @@
 //standard UI character width: 10px
 var ctx,screenBuffer;
 
-var chars = {
-  boxFull: "\u2588",
-  boxHeavy: "\u2593",
-  boxMedium: "\u2592",
-  boxLight: "\u2591",
-  doublePipe: String.fromCharCode(2405)
-}
-
 window.onload = function init(){
   const socket = io();
   var canvas = document.getElementById("c")
@@ -19,7 +11,7 @@ window.onload = function init(){
 
   screenBuffer = new Array(40).fill(0)
   screenBuffer = screenBuffer.map(()=>new Array(20).fill("."))
-  screenBuffer[0].fill(chars.doublePipe)
+  screenBuffer[0].fill(String.fromCharCode(2405))
   screenBuffer[screenBuffer.length-1] = screenBuffer[0]
   screenBuffer.forEach(row=>{
     row[0] = "=";

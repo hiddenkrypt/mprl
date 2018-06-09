@@ -5,13 +5,15 @@ function Player(newSocket){
   this.socket = newSocket
   this.username = ""
   this.character = null
+
 };
 
-module.exports = {
-  setWorld: function(worldModule){
-    world = worldModule;
+module.exports = function(world){
+
+  return {
+    connectNewPlayer: function(socket){
+      players.push(new Player(socket))
+      socket.emit("world", world.getWorld);
+    }
   }
-  connectNewPlayer: function(socket){
-    players.push(new Player(socket));
-  }
-};
+}

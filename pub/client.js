@@ -4,6 +4,7 @@ var ctx,screenBuffer;
 
 window.onload = function init(){
   const socket = io();
+  socket.on("world", (map)=>console.log(map))
   var canvas = document.getElementById("c")
   canvas.width = 600
   canvas.height = 590

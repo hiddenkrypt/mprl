@@ -1,5 +1,7 @@
 module.exports = function(){
+  console.log("initializing map")
   var map = mapGen()
+  console.log("map ready");
   return {
     getMap: function(){ return map }
   }
@@ -9,11 +11,8 @@ module.exports = function(){
 function mapGen(){
   var width = 400
   var height = 400
-  var grid = new Array(width).fill(0).map(()=>new Array(height).fill(Math.random()>.6?1:0))
-  return grid.map((row,x)=>{row.map((e,y)=>{
-      return new Tile(e?"stoneWall":"stoneFloor")
-    })
-  })
+  return [...Array(height)].map(()=>[...Array(width)].map(()=>Math.random()>.6?new Tile("stoneWall"):new Tile("stoneFloor")))  
+
 }
 
 function Tile(type){
@@ -47,8 +46,8 @@ var types = {
   }
 
 }
-function pickRand(array){
-  return array[Math.floor((Math.random()*array.length)+1)]
+function pickRand(arr){
+  return arr[Math.floor((Math.random()*arr.length))]
 }
 var glyphReference = {
   boxFull: "\u2588",

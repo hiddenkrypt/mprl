@@ -1,24 +1,47 @@
+var mapWidth = 400
+var mapHeight = 400
+
 module.exports = function(){
   console.log("initializing map")
   var map = mapGen()
   console.log("map ready");
   return {
-    getMap: function(){ return map }
+    getMap: function(player){
+      displayWidth=36;
+      displayHeight=18;
+      map[player.position.x][player.position.y].player= true;
+      var playerMap = map.slice(Math.floor(player.position.x - displayWidth/2), player.position.x +displayWidth/2))
+      playerMap = playerMap.map(e=>{
+        return e.slice(Math.floor(player.position.y-displayHeight/2),Math.floor(player.position.y+displayHeight/2))
+      })
+
+    }
+    spawnPlayer: function(){
+      var validTile = false
+      var spawnPosition = {x:-1, y:-1}
+      while(!validTile){
+        spawnPosition = {
+          x: Math.floor(Math.random()*mapWidth),
+          y: Math.floor(Math.random()*mapHeight)
+        }
+        validTile = map[spawnPosition.x][spawnPosition.y].passible
+      }
+      return spawnPosition
+    }
   }
 
 }
 
 function mapGen(){
-  var width = 400
-  var height = 400
-  return [...Array(height)].map(()=>[...Array(width)].map(()=>Math.random()>.6?new Tile("stoneWall"):new Tile("stoneFloor")))  
-
+  return [...Array(mapHeight)].map(()=>[...Array(mapWidth)].map(()=>Math.random()>.6?new Tile("stoneWall"):new Tile("stoneFloor")))
 }
 
 function Tile(type){
   this.glyph = types[type].glyph()
   this.bgColor = types[type].bgColor()
   this.fgColor = types[type].fgColor()
+  this.passible = types[type].passible
+  this.player = false
 }
 
 var types = {
@@ -31,7 +54,8 @@ var types = {
     },
     fgColor: function(){
       return Math.random()>.8?"#a1a1a1":"#b1b1bf"
-    }
+    },
+    passible: false
   },
   stoneFloor:{
     glyph: function(){
@@ -42,7 +66,8 @@ var types = {
     },
     fgColor: function(){
       return pickRand(["#a1a1a1","#b1b1bf", "#959f90", "#999", "#bbb"])
-    }
+    },
+    passible: true
   }
 
 }

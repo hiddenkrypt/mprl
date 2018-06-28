@@ -1,6 +1,6 @@
-var mapWidth = 400
-var mapHeight = 400
-
+var mapWidth = 400;
+var mapHeight = 400;
+var entityManager;
 module.exports = function(){
   console.log("initializing map")
   var map = mapGen()
@@ -13,9 +13,8 @@ module.exports = function(){
       var playerMap = map.slice(Math.floor(player.position.x - displayWidth/2), player.position.x +displayWidth/2))
       playerMap = playerMap.map(e=>{
         return e.slice(Math.floor(player.position.y-displayHeight/2),Math.floor(player.position.y+displayHeight/2))
-      })
-
-    }
+      });
+    },
     spawnPlayer: function(){
       var validTile = false
       var spawnPosition = {x:-1, y:-1}
@@ -27,6 +26,9 @@ module.exports = function(){
         validTile = map[spawnPosition.x][spawnPosition.y].passible
       }
       return spawnPosition
+    },
+    setEntityManager: function(eM){
+      entityManager = eM;
     }
   }
 

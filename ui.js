@@ -1,5 +1,6 @@
 console.log("load UI module")
 var players = [];
+var world;
 
 function Player(newSocket){
   this.socket = newSocket
@@ -8,9 +9,12 @@ function Player(newSocket){
   this.position = { x:-1, y:-1}
 };
 
-module.exports = function(world){
+module.exports = function(){
   console.log("init ui module")
   return {
+    setWorld: function(w){
+      world = w;
+    }
     connectNewPlayer: function(socket){
       var newPlayer = new Player(socket);
       newPlayer.position = world.spawnPlayer()

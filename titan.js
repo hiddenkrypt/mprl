@@ -10,8 +10,8 @@ entityManager.setWorld(world);
 
 
 module.exports = {
-  newPlayer: function newPlayer(newSocket){
+  newPlayer: function newPlayer(newSocket) {
     ui.connectNewPlayer(newSocket);
     console.log("added new player socket to array");
   }
-}
+};

@@ -1,6 +1,6 @@
-//hardcoded canvas 900x800
-//standard UI character width: 10px
+
 var ctx,screenBuffer;
+
 
 screenBuffer = new Array(40).fill(0);
 screenBuffer = screenBuffer.map(()=>new Array(20).fill("."));
@@ -40,12 +40,12 @@ window.onload = function init(){
       row.forEach((cell,y)=>{
         ctx.fillStyle = "#00ff00";
         if(cell.player){
-          ctx.fillText("@", (x*spacingH)+spacingH/2 + fontSize*.95 , (y*spacingV)+spacingV/2+fontSize*1.6)
+          ctx.fillText("@", (x*spacingH)+spacingH/2 + fontSize*0.95 , (y*spacingV)+spacingV/2+fontSize*1.6);
         }
         else{
-          ctx.fillText(cell.glyph, (x*spacingH)+spacingH/2 + fontSize*.95 , (y*spacingV)+spacingV/2+fontSize*1.6)
+          ctx.fillText(cell.glyph, (x*spacingH)+spacingH/2 + fontSize*0.95 , (y*spacingV)+spacingV/2+fontSize*1.6);
         }
       });
     });
   }
-}
+};

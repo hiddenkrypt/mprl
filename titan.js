@@ -1,8 +1,8 @@
 //titan.js
 "use strict";
-var world = require("./world.js")();
-var ui = require("./ui.js");
-var entityManager = require("./entityManager.js");
+const world = require("./world.js")();
+const ui = require("./ui.js");
+const entityManager = require("./entityManager.js");
 ui.setWorld(world);
 ui.setEntityManager(entityManager);
 world.setEntityManager(entityManager);

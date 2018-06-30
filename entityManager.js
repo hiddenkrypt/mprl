@@ -1,5 +1,5 @@
 var world;
-var summoner = require("./summoning.js");
+const summoner = require("./summoning.js");
 var entityList = [];
 
 

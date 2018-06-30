@@ -1,7 +1,6 @@
 var world;
+var summoner = require("./summoning.js");
+
 module.exports = {
 
-  setWorld: function(w){
-    world = w;
-  }
 };

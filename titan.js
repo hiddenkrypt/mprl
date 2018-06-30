@@ -6,8 +6,6 @@ var entityManager = require("./entityManager.js")();
 ui.setWorld(world);
 ui.setEntityManager(entityManager);
 world.setEntityManager(entityManager);
-entityManager.setWorld(world);
-
 
 module.exports = {
   newPlayer: function newPlayer(newSocket) {

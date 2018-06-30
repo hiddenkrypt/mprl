@@ -1,4 +1,4 @@
-console.log("load UI module");
+
 var players = [];
 var world;
 var entityManager;
@@ -10,18 +10,20 @@ function Player(newSocket, newCharacter){
 }
 
 module.exports = (function(){
-  console.log("init ui module");
-  this.setWorld = function( w ) {
+  var ui = {};
+  ui.setWorld = function( w ) {
     world = w;
   };
-  this.setEntityManager = function( ent ) {
+  ui.setEntityManager = function( ent ) {
     entityManager = ent;
   };
-  this.connectNewPlayer =  function( socket ) {
+  ui.connectNewPlayer =  function( socket ) {
     var newPlayer = new Player(socket, entityManager.spawn("player"));
     playerIndex = players.push(newPlayer)-1;
 
     var playerMap = world.getMap(player);
     socket.emit("world", playerMap);
   };
+
+  return ui;
 })();
